@@ -36,17 +36,13 @@ class ViewController: UIViewController,UINavigationControllerDelegate, UIImagePi
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     func setupTextField(tf: UITextField, text: String) {
         tf.defaultTextAttributes = [
             NSAttributedStringKey.foregroundColor.rawValue : UIColor.white,
             NSAttributedStringKey.strokeColor.rawValue : UIColor.black,
             NSAttributedStringKey.font.rawValue : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSAttributedStringKey.strokeWidth.rawValue: 6.0,
+            NSAttributedStringKey.strokeWidth.rawValue: -4.0,
         ]
         tf.textColor = UIColor.white
         tf.tintColor = UIColor.white
@@ -71,8 +67,10 @@ class ViewController: UIViewController,UINavigationControllerDelegate, UIImagePi
         let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         
         activityController.completionWithItemsHandler = { activity, success, items, error in
-            self.save()
-            self.dismiss(animated: true, completion: nil)
+            if success {
+                self.save()
+                self.dismiss(animated: true, completion: nil)
+            }
         }
         
         present(activityController, animated: true, completion: nil)
@@ -80,7 +78,7 @@ class ViewController: UIViewController,UINavigationControllerDelegate, UIImagePi
     }
     
     @IBAction func onClickCancelButton(_ sender: Any) {
-        //self.dismissViewControllerAnimated(true, completion: nil)
+        
         tfTop.text = "TOP"
         tfBottom.text = "BOTTOM"
         ivPhoto.image = nil
@@ -133,12 +131,14 @@ class ViewController: UIViewController,UINavigationControllerDelegate, UIImagePi
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.cgRectValue.height
     }
-    
+    func hideTopAndBottomBars(_ hide: Bool) {
+      toolbar.isHidden = hide
+        navigationBar.isHidden = hide
+    }
     func generateMemedImage() -> UIImage {
     
         // TODO: Hide toolbar and navbar
-        navigationBar.isHidden = true
-        toolbar.isHidden = true
+        hideTopAndBottomBars(true)
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -155,8 +155,7 @@ class ViewController: UIViewController,UINavigationControllerDelegate, UIImagePi
         let meme = Meme(topText: tfTop.text!, bottomText: tfBottom.text!, originalImage: ivPhoto.image!, memedImage: memedImage)
         
         //Show Toolbar and Navigation Bar
-        navigationBar.isHidden = false
-        toolbar.isHidden = false
+        hideTopAndBottomBars(false)
         
     }
     

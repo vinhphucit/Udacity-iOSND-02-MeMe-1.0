@@ -18,25 +18,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JBa-83-iU4">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="sdo-7J-lNO">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="GKA-nC-P5a">
-                                            <connections>
-                                                <action selector="onClickShareButton:" destination="BYZ-38-t0r" id="T6n-mv-BKe"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Zcc-Jd-U1P">
-                                            <connections>
-                                                <action selector="onClickCancelButton:" destination="BYZ-38-t0r" id="FBQ-18-OBz"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3iO-zH-Jw3">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="n2w-3H-gc0"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="kRR-33-nWb"/>
                                     <barButtonItem systemItem="camera" id="aLs-i7-EDo">
@@ -54,10 +40,10 @@
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wva-Gx-pOg">
-                                <rect key="frame" x="0.0" y="44" width="375" height="579"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7DI-Xc-diY">
-                                <rect key="frame" x="16" y="68" width="343" height="48"/>
+                                <rect key="frame" x="16" y="88" width="343" height="48"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
@@ -68,11 +54,31 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JBa-83-iU4">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="EGc-Yv-yuM"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Title" id="sdo-7J-lNO">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="GKA-nC-P5a">
+                                            <connections>
+                                                <action selector="onClickShareButton:" destination="BYZ-38-t0r" id="T6n-mv-BKe"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Zcc-Jd-U1P">
+                                            <connections>
+                                                <action selector="onClickCancelButton:" destination="BYZ-38-t0r" id="FBQ-18-OBz"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="3iO-zH-Jw3" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2kA-Lr-Kem"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="JBa-83-iU4" secondAttribute="top" constant="20" id="5sX-KP-Rq3"/>
+                            <constraint firstItem="JBa-83-iU4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4BA-ZI-NMw"/>
                             <constraint firstItem="7DI-Xc-diY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="CvH-e4-Jzn"/>
                             <constraint firstItem="JBa-83-iU4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DOA-ME-n2F"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7DI-Xc-diY" secondAttribute="trailing" constant="16" id="Era-QM-PJJ"/>
